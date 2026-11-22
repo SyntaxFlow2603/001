@@ -1,0 +1,492 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GroupWork — Contribution Verification</title><style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap');
+:root{font-family:'DM Sans',sans-serif;color:#182626;background:#f4f5f0}*{box-sizing:border-box}body{margin:0}header{height:76px;background:#fff;border-bottom:1px solid #dfe5dd;display:flex;align-items:center;justify-content:space-between;padding:0 5%}.brand{font-size:21px;font-weight:700;color:#122d27;text-decoration:none;display:flex;align-items:center;gap:10px}.logo{display:grid;place-items:center;background:#173f34;color:#fff;border-radius:10px;width:38px;height:38px;font-family:Georgia;font-size:25px}.tag,.topline,.badge,.bottom{font-size:11px;font-weight:700;letter-spacing:.12em;color:#75837a}main{min-height:calc(100vh - 76px);display:grid;grid-template-columns:44% 56%}aside{background:#dcebe0;padding:11vh 10% 40px 12%;position:relative}aside h1{font:normal clamp(40px,4.5vw,67px)/1.06 'DM Serif Display',Georgia,serif;letter-spacing:-.03em;margin:32px 0 22px;color:#183d32}em{color:#6e9781}aside>p{font-size:17px;line-height:1.7;max-width:400px;color:#4d655a}.badge{display:inline-block;border:1px solid #a9c4b1;border-radius:30px;padding:9px 13px;color:#476d58}.asidecard{margin-top:55px;display:flex;gap:14px;align-items:start;line-height:1.6;color:#526a5d;font-size:14px}.asidecard span{font-size:28px;color:#3c7d60}.asidecard strong{color:#234539}.bottom{position:absolute;bottom:35px}.workspace{padding:34px 10% 25px;background:#fbfcf9;display:flex;flex-direction:column}.topline{display:flex;justify-content:space-between;border-bottom:1px solid #e5ebe3;padding-bottom:20px}#app{width:100%;max-width:480px;margin:auto;padding:42px 0}.eyebrow{color:#668977;font-size:12px;letter-spacing:.1em;font-weight:700;text-transform:uppercase}.title{font:normal 38px/1.15 'DM Serif Display',Georgia,serif;color:#193d32;margin:12px 0}.sub{color:#6e7d73;line-height:1.6;margin:0 0 24px;font-size:15px}.note{background:#edf4ee;border-left:3px solid #86ae92;padding:12px 14px;color:#476152;font-size:13px;line-height:1.5;margin-bottom:20px}label{font-size:13px;font-weight:700;display:block;margin:16px 0 7px}input,textarea{font:inherit;width:100%;border:1px solid #d6dfd6;border-radius:7px;padding:13px;background:#fff;color:#213b31}input:focus,textarea:focus{outline:2px solid #9abea5}textarea{min-height:100px;resize:vertical}.btn{border:0;background:#194d3c;color:white;font:700 14px 'DM Sans',sans-serif;padding:14px 20px;border-radius:7px;cursor:pointer}.btn:hover{background:#2d6a52}.secondary{background:#edf2ec;color:#315647}.secondary:hover{background:#dfe9df}.button-area{height:75px;position:relative;margin-top:20px}.login{position:absolute;left:0;top:0;min-width:135px;transition:left .18s,top .18s}.error{color:#b34e3e;font-size:13px;margin:8px 0;min-height:18px}.choices{display:grid;gap:10px;margin:20px 0}.choice{border:1px solid #dce5dc;background:white;padding:15px;text-align:left;border-radius:8px;cursor:pointer;font:inherit;color:#29473a}.choice:hover,.choice.selected{border-color:#478565;background:#eff7f0}.actions{display:flex;gap:10px;align-items:center;margin-top:23px;flex-wrap:wrap}.project{border:1px solid #dce7db;background:white;border-radius:12px;padding:20px;margin:20px 0}.project h3{margin:5px 0 15px}.meta{display:flex;gap:25px;font-size:13px;color:#6b7e70}.pill{background:#f7ead7;color:#93601d;padding:6px 10px;border-radius:30px;font-size:12px}.receipt{border:1px solid #dce8dc;border-radius:12px;background:white;padding:22px}.receipt div{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid #eef1ec;font-size:14px}.receipt div span{color:#708175}.receipt strong{text-align:right;overflow-wrap:anywhere}footer{border-top:1px solid #e5ebe3;padding-top:18px;font-size:11px;color:#9aa79d;display:flex;justify-content:space-between;gap:10px}.overlay{position:fixed;inset:0;background:#12282080;display:grid;place-items:center;padding:18px;z-index:10}.hidden{display:none}.dialog{width:min(420px,100%);background:white;border-radius:10px;box-shadow:0 20px 80px #10251b55;overflow:hidden}.dialogbar{background:#194d3c;color:#d8ece0;padding:12px 18px;display:flex;justify-content:space-between;font-size:11px;letter-spacing:.1em;font-weight:700}#dialog-content{padding:25px}#dialog-content h2{font:normal 28px 'DM Serif Display',Georgia;margin:0 0 10px}#dialog-content p{color:#687a6c;line-height:1.5}@media(max-width:760px){header{height:65px}.tag{display:none}main{display:block}aside{padding:32px 6%}aside h1{font-size:38px;margin:15px 0}aside>p{font-size:15px}.asidecard,.bottom{display:none}.workspace{padding:24px 6%;min-height:65vh}#app{padding:35px 0}footer{flex-direction:column}}
+.emailparts{display:grid;grid-template-columns:1fr auto 1.05fr;align-items:center;gap:8px}.emailparts select{min-width:0;width:100%;padding:13px 8px;border:1px solid #d6dfd6;background:#fff;border-radius:7px;font:inherit}.passwrap{display:flex;align-items:center;border:1px solid #d6dfd6;border-radius:7px;background:#fff}.passwrap input{border:0}.textbtn{border:0;background:none;color:#667d6e;text-decoration:underline;cursor:pointer;font:inherit;padding:8px}.rules{font-size:12px;line-height:1.5;color:#819086}.optout{display:flex;gap:10px;align-items:flex-start;line-height:1.5;font-weight:500}.optout input{width:18px;height:18px;margin:1px 0;flex:none}.fakeprogress{display:flex;justify-content:space-between;font-size:10px;letter-spacing:.1em;color:#829087;margin-top:20px}.progressbar{height:5px;background:#e7eee8;margin-top:6px;border-radius:5px}.progressbar i{display:block;width:99%;height:100%;background:#78a58a}.loginlinks{display:flex;gap:12px;font-size:13px}
+/* Give the evasive button room to move in both dimensions. */
+.button-area{height:180px;overflow:hidden}
+.login{transition:left .16s ease-out,top .16s ease-out}
+.button-area{height:230px;position:relative;overflow:hidden;background:linear-gradient(135deg,#f3f8f3,#e7f1e8);border:1px dashed #c7d9c9;border-radius:12px}
+.login{left:0;top:0;transition:none;display:flex;align-items:center;justify-content:center;gap:10px;will-change:left,top;z-index:2}
+.face{display:flex;gap:3px;align-items:center}.face i{display:block;background:white;border-radius:50%;width:9px;height:11px;position:relative}.face i:after{content:'';position:absolute;width:4px;height:4px;background:#153d31;border-radius:50%;left:2px;top:4px;transform:translate(var(--eye-x,0),var(--eye-y,0))}.login.scared .face i{height:13px}.login.tired{background:#668474}.creature-speech{position:absolute;bottom:10px;right:12px;color:#718d7a;font-size:12px;font-style:italic;pointer-events:none}
+@keyframes cushion-bounce{0%{transform:scale(.9,1.1)}50%{transform:scale(1.07,.94)}100%{transform:scale(1)}}
+.login.bounce{animation:cushion-bounce .22s ease-out}
+.error:not(:empty){display:block;background:#fff0e9;border:2px solid #bf4b35;border-left:9px solid #bf4b35;border-radius:8px;color:#8e2b20;padding:17px 16px;margin:18px 0;font-size:15px;font-weight:700;line-height:1.45;box-shadow:0 5px 0 #f3d7c9}.error:not(:empty)::before{content:'⚠  ATTENTION — ';display:block;font-size:12px;letter-spacing:.12em;margin-bottom:5px}.category-choice strong,.category-choice span{display:block}.category-choice strong{font-size:16px}.category-choice span{margin-top:5px;color:#708276;font-size:13px}.format-select{font:inherit;width:100%;padding:13px;background:white;border:1px solid #cbd9cf;border-radius:7px;color:#1c3b2e}aside{padding-top:7vh}.journey-card{border:1px solid #b6cdbb;background:#f2f8f1b8;border-radius:14px;padding:18px;margin-top:28px}.journey-head{display:flex;justify-content:space-between;gap:12px;font-size:11px;letter-spacing:.09em;color:#6d8876}.journey-head b{font-size:12px;letter-spacing:0;color:#244a36;text-align:right}.journey-types{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:18px}.journey-types span{background:#e2eee2;border:1px solid transparent;border-radius:8px;display:flex;flex-direction:column;gap:5px;padding:10px 7px;font-size:22px;color:#729680}.journey-types span.active{background:#1d5942;border-color:#1d5942;color:#fff}.journey-types b{font-size:12px}.journey-types small{font-size:10px;line-height:1.2}.journey-steps{display:grid;gap:12px;margin:24px 0 40px}.journey-steps>div{display:flex;align-items:center;gap:11px;color:#789183;font-size:13px}.journey-steps i{font-style:normal;border:1px solid #abc2af;border-radius:50%;width:33px;height:33px;display:grid;place-items:center;font-size:10px;flex:none}.journey-steps .on{color:#214e37;font-weight:700}.journey-steps .on i{background:#255d42;color:#fff;border-color:#255d42}.journey-steps small{display:block;font-weight:400;margin-top:3px;font-size:11px;color:#7c9584}@media(max-width:760px){aside{padding:28px 6%}aside h1{margin:15px 0}.journey-card{margin-top:15px}.journey-steps{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 0}.journey-steps>div{font-size:11px}.journey-steps small{display:none}.journey-steps i{width:25px;height:25px}.bottom{display:none}}
+.login-clock{display:flex;align-items:center;justify-content:space-between;gap:15px;background:#173f34;color:#dceee0;border-radius:10px;padding:12px 16px;margin:0 0 24px;font-size:10px;font-weight:700;letter-spacing:.1em}.login-clock strong{font:700 24px/1 'DM Sans',sans-serif;letter-spacing:.06em;color:#fff;font-variant-numeric:tabular-nums}.cookie-icon{width:50px;height:50px;border-radius:50%;background:#e2eee2;color:#2b684b;display:grid;place-items:center;font-size:27px;margin-bottom:16px}.cookie-note{font-size:12px}.cookie-actions .btn{flex:1}.cookie-actions{margin-top:22px}
+.allocation label{display:flex;justify-content:space-between;gap:10px;font-size:15px}.allocation input[type=range]{padding:0;accent-color:#20573e;margin:14px 0}.team-shares{margin-top:12px}.team-shares div{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #e6ede5;padding:10px 0;font-size:14px}.team-shares span{color:#607669}.team-shares .share-total{font-weight:700;border:0}.team-shares .share-total span{color:#1b4532}
+/* Larger type for the complete journey, including small status labels. */
+body{font-size:18px;line-height:1.5}.tag,.topline,.badge,.bottom,.eyebrow,.fakeprogress,.dialogbar,.login-clock{font-size:13px}.sub{font-size:18px}.note,label,.rules,.category-choice span,.meta,.pill,.receipt div,.team-shares div,.loginlinks,.creature-speech{font-size:16px}.btn{font-size:17px}.choice,.format-select,input,textarea,.emailparts select{font-size:18px}.error:not(:empty){font-size:18px}.error:not(:empty)::before{font-size:14px}.category-choice strong{font-size:19px}.journey-head,.journey-head b,.journey-types b,.journey-steps>div{font-size:15px}.journey-types small,.journey-steps small{font-size:13px}.journey-steps i{font-size:12px}.login-clock strong{font-size:27px}footer,.cookie-note{font-size:14px}.dialog{width:min(500px,100%);max-height:calc(100dvh - 36px);overflow-y:auto}#dialog-content h2{font-size:32px}#dialog-content p{font-size:17px}.journey-types span{min-width:0;overflow-wrap:anywhere}@media(max-width:760px){aside>p{font-size:17px}.journey-steps>div{font-size:14px}.emailparts{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)}.emailparts select{font-size:16px}.cookie-actions .btn{min-width:0}.workspace{padding-left:5%;padding-right:5%}}
+.upload-box .sub{margin:8px 0;font-size:15px}.upload-box input[type=file]{padding:10px;background:#f5f8f4;font-size:15px}.evidence-row{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid #dce7dc;margin-top:12px;padding-top:12px;overflow-wrap:anywhere}.evidence-row small{display:block;color:#607669;font-size:14px;margin-top:4px}
+
+
+/* ============ PART 2 & 3 — continued styles ============ */
+
+/* ---- contribution positioning quiz ---- */
+.quiz-q h3{font:600 18px/1.5 'DM Sans',sans-serif;color:#1c3b2e;margin:26px 0 10px}
+.quiz-opts{display:grid;gap:9px;margin-top:6px}
+.quiz-opt{display:flex;gap:11px;align-items:flex-start;background:#fff;border:1px solid #d6dfd6;border-radius:9px;padding:13px 14px;cursor:pointer;transition:.15s;line-height:1.5}
+.quiz-opt:hover{border-color:#86ae92;background:#f4f9f4}
+.quiz-opt input{width:18px;height:18px;margin:2px 0 0;flex:none;accent-color:#20573e}
+.quiz-opt span{font-size:16px;color:#264a38;font-weight:500}
+
+/* ---- positioning result card ---- */
+.pos-result{background:#173f34;color:#e6f2e8;border-radius:14px;padding:26px 24px 22px;margin:8px 0 22px;position:relative;overflow:hidden}
+.pos-result::after{content:'✳';position:absolute;right:-16px;top:-30px;font-size:130px;opacity:.07;pointer-events:none}
+.pr-eyebrow{font-size:11px;letter-spacing:.14em;color:#9dc4aa;font-weight:700}
+.pos-result strong{display:block;font:normal 30px/1.2 'DM Serif Display',Georgia,serif;margin:10px 0 16px;color:#fff}
+.pr-meter{height:8px;background:rgba(255,255,255,.15);border-radius:6px;overflow:hidden}
+.pr-meter i{display:block;height:100%;background:#8fc7a4;border-radius:6px;transition:width .8s ease}
+.pr-meta{display:flex;justify-content:space-between;margin-top:8px;font-size:13px;color:#9dc4aa;letter-spacing:.06em}
+.pr-meta b{color:#fff;font-size:15px;font-variant-numeric:tabular-nums}
+.pos-result small{display:block;margin-top:14px;font-size:13px;line-height:1.6;color:#b9d6c0}
+
+/* ---- evaluator ---- */
+.eval-box{background:#fff;border:1px solid #d6dfd6;border-radius:12px;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:22px;flex-wrap:wrap}
+.eval-box span{font-size:11px;letter-spacing:.12em;color:#829087;font-weight:700}
+.eval-box strong{font-size:15px;color:#1c3b2e}
+.eval-box.bad{border-color:#e0b7a6;background:#fff7f2}
+.eval-box.bad strong{color:#8e2b20}
+
+/* ---- survey ---- */
+.survey-q h3{font:600 16px/1.5 'DM Sans',sans-serif;color:#1c3b2e;margin:22px 0 9px}
+
+/* ---- draft preview ---- */
+.preview-card{background:#f4f6f1;border:1px dashed #b9c9bb;border-radius:12px;padding:18px;margin-bottom:16px}
+.pc-head{display:flex;justify-content:space-between;align-items:center;font-size:11px;letter-spacing:.12em;color:#829087;font-weight:700;padding-bottom:12px;border-bottom:1px solid #dce5da;margin-bottom:6px}
+.pc-head b{background:#e3ece2;color:#668977;padding:4px 10px;border-radius:20px;font-size:10px}
+.pc-row{display:flex;gap:14px;padding:9px 0;border-bottom:1px solid #e6ece3;font-size:14px;flex-wrap:wrap}
+.pc-row span{color:#829087;font-size:12px;flex:0 0 120px;padding-top:2px}
+.pc-row strong{color:#264a38;font-weight:600;line-height:1.5;flex:1;min-width:180px}
+.pc-row strong.dim{color:#8b978d;font-style:italic;font-weight:400}
+
+/* ---- upsell / paywall ---- */
+.upsell{background:#fff8ea;border:1px solid #ecd9ae;border-radius:12px;padding:16px;display:flex;gap:13px;margin-bottom:18px}
+.upsell>span{font-size:26px;color:#b98a2e;flex:none}
+.upsell strong{display:block;font-size:15px;color:#6b4d12;margin-bottom:4px}
+.upsell div{font-size:13.5px;color:#8a6d33;line-height:1.55}
+.upsell b{color:#5f4310}
+.upsell .btn{margin-top:12px;background:#b98a2e;border:0}
+.upsell .btn:hover{background:#a0761f}
+.price-row{display:flex;justify-content:space-between;align-items:center;background:#f4f6f1;border-radius:10px;padding:14px 16px;margin:16px 0 8px;font-size:15px}
+.price-row strong{font:700 26px 'DM Sans',sans-serif;color:#1c3b2e}
+.feat-list{list-style:none;margin:10px 0 6px;padding:0;font-size:14px;color:#4d655a}
+.feat-list li{padding:5px 0 5px 22px;position:relative}
+.feat-list li::before{content:'✳';position:absolute;left:0;color:#3c7d60;font-size:13px}
+
+/* ---- checkout ---- */
+.pay-form input{width:100%;padding:13px;border:1px solid #d6dfd6;border-radius:7px;font:inherit;background:#fff;margin-bottom:14px;font-size:17px}
+.pay-form input:focus{border-color:#20573e;outline:none}
+
+/* ---- paid receipt ---- */
+.pdf-preview{background:#fff}
+.pdf-preview .rh{display:flex;justify-content:space-between;align-items:center;font-size:11px;letter-spacing:.12em;color:#829087;font-weight:700;padding-bottom:12px;border-bottom:1px solid #e5ebe3;margin-bottom:6px}
+.pdf-preview .rh b{background:#1d5942;color:#fff;padding:4px 10px;border-radius:20px;font-size:10px}
+
+/* ---- misc ---- */
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.actions{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap;align-items:center}
+
+/* ---- precision calibration slider ---- */
+.precision-box{background:#fff;border:1px solid #d6dfd6;border-radius:14px;padding:22px 20px;margin:8px 0 20px}
+.pb-read{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px}
+.pb-read span{font-size:11px;letter-spacing:.12em;color:#829087;font-weight:700}
+.pb-read b{font:700 30px 'DM Sans',sans-serif;color:#1c3b2e;font-variant-numeric:tabular-nums}
+.precision-box input[type=range]{width:100%;padding:0;accent-color:#20573e;margin:6px 0 8px}
+.pb-scale{display:flex;justify-content:space-between;font-size:12px;color:#829087}
+
+/* ---- fake ad banner (sits right above the pay button) ---- */
+.ad-banner{margin:4px 0 16px;padding:14px 16px;border-radius:11px;background:#eef7f0;border:1px solid #b6dcbe;cursor:pointer;display:flex;gap:12px;align-items:center;transition:.15s;position:relative}
+.ad-banner:hover{background:#e2f2e6;border-color:#7bb08b;transform:translateY(-1px)}
+.ad-tag{background:#2b684b;color:#fff;font-size:10px;font-weight:800;padding:3px 7px;border-radius:5px;letter-spacing:.08em;flex:none}
+.ad-banner strong{display:block;font-size:14px;color:#1c3b2e}
+.ad-banner small{display:block;font-size:12px;color:#3c7d60;margin-top:2px}
+
+/* ---- full-screen neon interstitial (auto-opens on checkout, pulses & bounces) ---- */
+.ad-takeover{position:fixed;inset:0;z-index:999;display:flex;align-items:center;justify-content:center;padding:24px;animation:adpulse 1.1s ease-in-out infinite}
+.ad-takeover::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,#ff2d78 0%,#ff7a00 45%,#ffe600 100%);opacity:.96}
+.ad-takeover::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(255,255,255,.13) 0 18px,transparent 18px 36px)}
+@keyframes adpulse{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
+.ad-panel{position:relative;z-index:2;width:min(560px,100%);background:#ff00a8;border:5px solid #ffe600;border-radius:26px;padding:36px 30px 32px;text-align:center;color:#fff;box-shadow:0 0 0 8px #ff2d78,0 0 70px 14px rgba(255,45,120,.8);animation:adbounce 1.4s ease-in-out infinite}
+@keyframes adbounce{0%,100%{transform:translateY(0) rotate(-.5deg)}50%{transform:translateY(-14px) rotate(.5deg)}}
+.ad-panel h2{font:700 36px/1.12 'DM Sans',sans-serif;letter-spacing:.01em;margin:0 0 12px;text-shadow:0 3px 0 rgba(0,0,0,.28)}
+.ad-panel .flair{font-size:15px;color:#ffe600;font-weight:800;letter-spacing:.1em;margin-bottom:14px}
+.ad-panel p{font-size:16px;line-height:1.6;color:#ffe0f0;margin:0 0 14px}
+.ad-count{display:inline-block;background:#ffe600;color:#c4006b;font-weight:900;font-size:14px;padding:6px 16px;border-radius:30px;animation:adflash .7s steps(2) infinite}
+@keyframes adflash{50%{opacity:.3}}
+.ad-panel .btn{background:#ffe600;color:#b3005c;border:0;font-weight:900;font-size:18px;margin-top:20px;width:auto;padding:14px 28px}
+.ad-panel .btn:hover{background:#fff;color:#c4006b}
+.ad-exit{position:absolute;z-index:3;right:16px;bottom:12px;background:rgba(0,0,0,.55);color:#fff;border:1px solid rgba(255,255,255,.55);border-radius:20px;padding:7px 16px;font-size:13px;cursor:pointer}
+.ad-exit:hover{background:rgba(0,0,0,.8)}
+
+/* ---- sidebar: phase indicator ---- */
+.phase-banner{display:flex;align-items:baseline;gap:10px;background:#173f34;color:#dceee0;border-radius:12px;padding:14px 16px;margin:20px 0 22px}
+.phase-banner span{font-size:11px;letter-spacing:.14em;font-weight:700;color:#9dc4aa}
+.phase-banner b{font:700 34px/1 'DM Sans',sans-serif;color:#fff}
+.phase-track{display:flex;flex-direction:column;gap:9px;margin:26px 0 44px}
+.ph{display:flex;align-items:center;justify-content:space-between;gap:12px;border:1px solid #b6cdbb;border-radius:10px;padding:13px 16px;transition:.15s}
+.ph b{font-size:15px;font-weight:700;color:#5d7d6b;white-space:nowrap}
+.ph small{font-size:12px;color:#7c9584;text-align:right;line-height:1.35}
+.ph.cur{background:#1d5942;border-color:#1d5942;box-shadow:0 10px 24px -16px rgba(23,63,52,.8)}
+.ph.cur b{color:#fff}
+.ph.cur small{color:#b9d6c0}
+.ph.done{border-color:#a9c4b1;background:#eaf3ec}
+.ph.done b{color:#3c7d60}
+.ph.done b::before{content:'✓ ';font-weight:800}
+
+/* ---- dead affordances: clickable-looking text that does nothing ---- */
+.deadlink{border:0;background:none;padding:0;margin:0 4px;font:inherit;font-size:13px;color:#20573e;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.deadlink:hover{color:#3c7d60}
+.deadhelp{margin:18px 0 2px;font-size:13px;color:#668977}
+.deadhelp .deadlink{color:#668977}
+.deadhelp .deadlink:hover{color:#20573e}
+footer .deadlink{font-size:14px}
+
+</style></head><body><header><a class="brand" href="."><span class="logo">g.</span> GroupWork</a><span class="tag">CONTRIBUTION VERIFICATION SYSTEM</span></header><main><aside><div class="badge">STUDENT PORTAL / 2026</div><h1>Teamwork is hard.<br><em>Proving it</em> is harder.</h1><p>Every contribution deserves to be recognised. Every contribution also deserves a little paperwork.</p><div class="asidecard"><span>✳</span><div><strong>Officially unofficial.</strong><br>A reverse UX experiment about the work behind the work.</div></div><div class="bottom">GROUPWORK &nbsp; • &nbsp; PROOF OF PARTICIPATION</div></aside><section class="workspace"><div class="topline"><span>STUDENT SERVICES</span><span id="step-label">SECURE SIGN IN</span></div><div id="app"></div><footer>© 2026 GroupWork <button type="button" class="deadlink">Student Services</button><span>Demo prototype · No data is sent or stored</span> · <button type="button" class="deadlink">Terms</button><button type="button" class="deadlink">Privacy</button></footer></section></main><div id="overlay" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="dialog-title"><div class="dialog"><div class="dialogbar"><span>GROUPWORK ASSISTANT</span><span>✳</span></div><div id="dialog-content"></div></div></div><script>
+const app=document.querySelector('#app'), overlay=document.querySelector('#overlay'), dialog=document.querySelector('#dialog-content'), label=document.querySelector('#step-label');
+let loginStartedAt=Date.now();
+let evidenceFiles=[];
+let state={step:'login',escapes:0,path:'',category:'',share:25,description:'',evidence:'',statement:'',member:'',task:'',date:'',status:'Not observed',agree:false}, pop=0;
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function renderLogin(){ label.textContent='SECURE SIGN IN';
+if(state.step==='login'){app.innerHTML=`<div class="login-clock"><span>TIME SPENT TRYING TO SIGN IN</span><strong id="login-timer" aria-label="Time elapsed">00:00</strong></div><div class="eyebrow">Welcome back · Step 1 of too many</div><h2 class="title">Sign in to GroupWork.</h2><p class="sub">A little paperwork never hurt anyone. Probably.</p><div class="note"><strong>Demo mode.</strong> Use fictional details only. No credentials are sent or stored.</div><form id="loginform" novalidate><label for="student">Student ID</label><input id="student" placeholder="20260001" autocomplete="off"><label for="email">Email address</label><div class="emailparts"><input id="email" placeholder="your name" autocomplete="off"><span>@</span><select id="domain" aria-label="Email domain"><option value="">select domain</option><option>campus.edu</option><option>example.com</option><option>student.edu</option></select></div><label for="password">Password</label><div class="passwrap"><input id="password" type="password" placeholder="A fictional password" autocomplete="new-password"><button type="button" id="showpass" class="textbtn">Hide</button></div><p class="rules">Your password must contain at least 8 characters, one uppercase letter, one number, and the first letter of your email.</p><label class="optout"><input type="checkbox" id="reject" checked> I do not wish to disagree with not accepting the demo terms.</label><div class="fakeprogress"><span>LOGIN READINESS</span><strong id="readiness">99% COMPLETE</strong></div><div class="progressbar"><i></i></div><p class="error" id="error" aria-live="polite"></p><div class="button-area"><button class="btn login" id="login" type="submit"><span class="face" aria-hidden="true"><i></i><i></i></span><span>Login</span></button><span class="creature-speech" aria-live="polite">psst... please don’t click me</span></div><div class="loginlinks"><button type="button" class="textbtn" id="reset">Reset</button><button type="button" class="textbtn" id="help">Need help?</button><button type="button" class="deadlink">Forgot password?</button><button type="button" class="deadlink">Privacy</button></div></form>`;
+const b=document.querySelector('#login'), arena=document.querySelector('.button-area'), speech=arena.querySelector('.creature-speech');
+let x=0,y=0,vx=0,vy=0,mouseX=-9999,mouseY=-9999,lastTime=0,chaseTime=0,tired=false,touches=0,near=false,wallGrace=0;
+const controller=new AbortController();
+function pointer(e){if(e.pointerType==='mouse'){mouseX=e.clientX;mouseY=e.clientY}}
+window.addEventListener('pointermove',pointer,{signal:controller.signal});
+function frame(time){
+  if(!b.isConnected){controller.abort();return}
+  const dt=Math.min((time-(lastTime||time))/16.67,2);lastTime=time;
+  const area=arena.getBoundingClientRect(), rect=b.getBoundingClientRect();
+  const maxX=Math.max(0,area.width-rect.width),maxY=Math.max(0,area.height-rect.height);
+  x=Math.max(0,Math.min(x,maxX));y=Math.max(0,Math.min(y,maxY));
+  const dx=area.left+x+rect.width/2-mouseX,dy=area.top+y+rect.height/2-mouseY,d=Math.hypot(dx,dy)||1;
+  const danger=d<180&&!tired;
+  if(danger){
+    chaseTime+=dt*16.67;
+    const force=(1-d/180)*1.65+.45;
+    // After a bounce, preserve the reflected momentum instead of letting the
+    // repulsion force immediately push the button back into the same wall.
+    const escapeScale=wallGrace>0 ? .08 : 1;
+    vx+=(dx/d*force*escapeScale + Math.sin(time/260)*.18)*dt;
+    vy+=(dy/d*force*escapeScale + Math.cos(time/310)*.18)*dt;
+    if(!near){speech.textContent=['hey, personal space!','not today!','you can’t catch me!','leave me alone!'][Math.floor(Math.random()*4)]}near=true;
+  }else{near=false;vx+=Math.sin(time/1100)*.025*dt;vy+=Math.cos(time/1300)*.025*dt}
+  wallGrace=Math.max(0,wallGrace-dt*16.67);
+  vx*=Math.pow(.985,dt);vy*=Math.pow(.985,dt);
+  const speed=Math.hypot(vx,vy),limit=danger?8:1.2;if(speed>limit){vx=vx/speed*limit;vy=vy/speed*limit}
+  if(tired){vx=0;vy=0}
+  x+=vx*dt;y+=vy*dt;
+  if(!tired){
+    let hit=false;
+    // Reflect the overshoot as well as velocity, as a ball does at a cushion.
+    if(maxX>0 && x<0){x=Math.min(maxX,-x);vx=Math.max(4,Math.abs(vx)*.95);hit=true}
+    else if(maxX>0 && x>maxX){x=Math.max(0,2*maxX-x);vx=-Math.max(4,Math.abs(vx)*.95);hit=true}
+    if(maxY>0 && y<0){y=Math.min(maxY,-y);vy=Math.max(4,Math.abs(vy)*.95);hit=true}
+    else if(maxY>0 && y>maxY){y=Math.max(0,2*maxY-y);vy=-Math.max(4,Math.abs(vy)*.95);hit=true}
+    if(hit){wallGrace=450;b.classList.remove('bounce');void b.offsetWidth;b.classList.add('bounce')}
+  }
+  b.style.left=x+'px';b.style.top=y+'px';b.classList.toggle('scared',danger);
+  const lookX=Math.max(-3,Math.min(3,-dx/d*3)),lookY=Math.max(-2,Math.min(2,-dy/d*2));b.style.setProperty('--eye-x',lookX+'px');b.style.setProperty('--eye-y',lookY+'px');
+  if(chaseTime>2000&&!tired){tired=true;vx=vy=0;speech.textContent='Okay... I’m tired. You win.';b.classList.add('tired')}
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+document.querySelector('#loginform').onsubmit=e=>{
+  e.preventDefault();if(!valid(true))return;
+  if(!tired){touches++;if(touches<2){speech.textContent=['Nope!','Missed me!'][touches-1];vx=(Math.random()-.5)*12;vy=(Math.random()-.5)*12;return}tired=true;vx=vy=0;b.classList.add('tired');speech.textContent='Okay... I’m tired. You win.';return}
+  controller.abort();state.studentId=(document.querySelector('#student').value||'').trim();state.email=(document.querySelector('#email').value||'').trim()+'@'+(document.querySelector('#domain').value||'');document.querySelector('#password').value='';showPopup(0)
+};
+document.querySelector('#showpass').onclick=()=>{const p=document.querySelector('#password'),show=p.type==='password';p.type=show?'text':'password';document.querySelector('#showpass').textContent=show?'Show':'Hide'};
+document.querySelector('#reset').onclick=()=>showLoginDialog('Reset your progress?','Your progress is valuable. Are you sure you want to consider resetting it?','No, reset nothing','Yes, continue logging in');
+document.querySelector('#help').onclick=()=>showLoginDialog('How can we help?','It looks like you are trying to log in. Have you considered logging in?','That was helpful','I still need help');return}
+}
+
+/* ===================== PART 2 & 3 — CONTRIBUTION POSITIONING + PROOF GENERATION =====================
+   Continues Part 1 (sign-in) exactly as designed by the teammate.
+   Part 2: positioning quiz -> two wrong positionings -> a barely-correct third one.
+   Part 3: upload (2 MB trap) -> evaluation failure -> official rubric -> 6 vague questions ->
+           unsatisfying free draft -> paid "Deep Contribution Analysis" -> real PDF download.
+*/
+
+const QUIZ=[
+ ['In a group project, which creature do you most resemble?',['A bee','An owl','A dolphin','A chameleon']],
+ ['When do you usually finish your part?',['Five minutes before the deadline','One day early','I never finish, I iterate','Depends on the mood']],
+ ['Your ideal workspace has…',['Natural light','A door that locks','Snacks nearby','Teammates who know what they are doing']],
+ ['Which colour best describes your contribution?',['Deep green','Off-white','A confident orange','I refuse to choose']]
+];
+
+const POS_RESULTS=[
+ ['ATTEMPT 1 OF 3','We found you.','Your core contribution is','Meeting minutes formatting','Confidence','72%','This was calculated from all four of your answers. The system is rarely this certain.','Is this positioning accurate?'],
+ ['ATTEMPT 2 OF 3','We looked again.','Your contribution appears to be','Group chat atmosphere maintenance','Confidence','84%','Your answers were remarkably unspecific, so we matched you with the closest available profile.','Still not accurate?'],
+ ['ATTEMPT 3 OF 3','This is our final offer.','With limited confidence, your contribution is','User interviews &amp; note-taking','Confidence','41%','Further calibration is not available in this edition. This is as precise as it gets.','Continue with this positioning']
+];
+
+const SURVEY_Q=[
+ ['How much of the final result is yours?',['A little','Some','A lot','Hard to say']],
+ ['How confident are you that this reflects reality?',['Not at all','Somewhat','Completely','This question makes me tired']],
+ ['How visible is your contribution?',['Clearly visible','Visible in good lighting','Visible to those who look hard','Invisible but real']],
+ ['If your contribution were a file format, it would be…',['.txt','.zip','.json','Unsupported']],
+ ['How would your team describe your work?',['Accurately','Kindly','Briefly','They wouldn’t']],
+ ['How team was your teamwork?',['Very team','Team','Team-adjacent','Not sure']]
+];
+
+function updateSidebar(){
+ const aside=document.querySelector('aside');
+ const idx=state.step==='login'?0:((state.step==='position'||state.step==='precision')?1:2);
+ const names=['SIGN IN','POSITIONING','GENERATE PROOF'];
+ const c=i=>i===idx?'cur':(i<idx?'done':'');
+ aside.innerHTML=`<div class="badge">GROUPWORK / PROOF JOURNEY</div><div class="phase-banner"><span>PHASE</span><b>${idx+1}</b><span>OF 3 · ${names[idx]}</span></div><h1>Make your work <em>visible.</em></h1><p>Three steps to turn honest work into paperwork. The work behind the work.</p><div class="phase-track"><div class="ph ${c(0)}"><b>01 · Sign in</b><small>Prove you want to prove it</small></div><div class="ph ${c(1)}"><b>02 · Find your role</b><small>Questions that locate you, eventually</small></div><div class="ph ${c(2)}"><b>03 · Generate proof</b><small>Evaluate, survey, and one small payment</small></div></div><div class="bottom">GROUPWORK &nbsp; • &nbsp; PROOF OF PARTICIPATION</div>`;
+}
+
+function render(){
+ if(state.step==='login'){renderLogin();return}
+ updateSidebar();
+ label.textContent=({position:'PHASE 2 / 3',precision:'PHASE 2 / 3',upload:'PHASE 3 / 3',evaluate:'PHASE 3 / 3',survey:'PHASE 3 / 3',preview:'PHASE 3 / 3',receipt:'COMPLETE'})[state.step];
+ if(state.step==='position'){renderPosition();return}
+ if(state.step==='precision'){renderPrecision();return}
+ if(state.step==='upload'){renderUpload();return}
+ if(state.step==='evaluate'){renderEvaluate();return}
+ if(state.step==='survey'){renderSurvey();return}
+ if(state.step==='preview'){renderPreview();return}
+ renderReceipt();
+}
+
+/* ---------------- PART 2 · POSITIONING ---------------- */
+function renderPosition(){
+ if(state.posAttempt===0){
+  app.innerHTML=`<div class="eyebrow">PHASE 2 · CONTRIBUTION POSITIONING</div><h2 class="title">Let’s find your true role.</h2><p class="sub">Answer four questions. The system will precisely locate your contribution inside your team. This usually works.</p><div class="quiz">${QUIZ.map((q,qi)=>`<div class="quiz-q"><h3>${qi+1}. ${q[0]}</h3><div class="quiz-opts">${q[1].map(o=>`<label class="quiz-opt"><input type="radio" name="q${qi}" value="${esc(o)}" ${state.posAnswers[qi]===o?'checked':''}><span>${o}</span></label>`).join('')}</div></div>`).join('')}</div><p class="deadhelp"><button type="button" class="deadlink">How does positioning work?</button></p><p class="error" id="error" role="alert"></p><div class="actions"><button class="btn" id="locate">Locate my contribution</button></div>`;
+  document.querySelectorAll('.quiz input').forEach(r=>r.onchange=()=>{state.posAnswers[+r.name.slice(1)]=r.value});
+  document.querySelector('#locate').onclick=()=>{
+   const ok=QUIZ.every((q,qi)=>document.querySelector(`input[name="q${qi}"]:checked`));
+   if(!ok){document.querySelector('#error').textContent='All four questions require an answer. The system takes questions very seriously.';return}
+   fakeProgress('CALIBRATING YOUR CONTRIBUTION','Comparing your answers against 4,096 role profiles. This may take a moment, or several.',()=>{state.posAttempt=1;render()});
+  };
+  return;
+ }
+ const R=POS_RESULTS[state.posAttempt-1];
+ const early=state.posAttempt<3;
+ app.innerHTML=`<div class="eyebrow">PHASE 2 · ${R[0]}</div><h2 class="title">${R[1]}</h2><p class="sub">${R[2]}</p><div class="pos-result"><span class="pr-eyebrow">POSITIONED CONTRIBUTION</span><strong>${R[3]}</strong><div class="pr-meter"><i style="width:${R[5]}"></i></div><div class="pr-meta"><span>${R[4]}</span><b>${R[5]}</b></div><small>${R[6]}</small></div><p class="deadhelp"><button type="button" class="deadlink">How was this calculated?</button></p><p class="error" id="error" role="alert"></p>${early?`<div class="actions"><button class="btn" id="pos-yes">That’s accurate</button><button class="btn secondary" id="pos-no">Not accurate — try again</button></div>`:`<div class="actions"><button class="btn" id="pos-go">${R[7]}</button><button class="btn secondary" id="pos-back">Re-read the questions</button></div>`}`;
+ const yes=document.querySelector('#pos-yes'),no=document.querySelector('#pos-no'),goB=document.querySelector('#pos-go'),backB=document.querySelector('#pos-back');
+ if(yes)yes.onclick=()=>{document.querySelector('#error').textContent=`Confidence is ${R[5]}. Confirmation requires at least 90%. Please recalibrate.`};
+ if(no)no.onclick=()=>fakeProgress('RECALIBRATING YOUR CONTRIBUTION','The system is trying harder this time. Your answers will be reused.',()=>{state.posAttempt++;render()});
+ if(goB)goB.onclick=()=>go('precision');
+ if(backB)backB.onclick=()=>{state.posAttempt=0;render()};
+}
+
+/* ---------------- PART 2 · PRECISION CALIBRATION (the slider that never reaches 100%) ---------------- */
+function renderPrecision(){
+ const v=state.precision;
+ app.innerHTML=`<div class="eyebrow">PHASE 2 · PRECISION CALIBRATION</div><h2 class="title">Set your positioning precision.</h2><p class="sub">The system requires 100% precision before you may continue. Most contributors reach it eventually.</p><div class="precision-box"><div class="pb-read"><span>CURRENT PRECISION</span><b id="pb-val">${v}%</b></div><input type="range" id="pb-slider" min="0" max="100" step="1" value="${v}"><div class="pb-scale"><span>0%</span><span>100% required</span></div></div><p class="deadhelp"><button type="button" class="deadlink">How is precision calibrated?</button></p><p class="error" id="error" role="alert"></p><div class="actions"><button class="btn secondary" id="back">Back</button><button class="btn" id="confirm">Confirm precision</button>${state.precAttempt>=3?`<button class="textbtn" id="giveup">Give up and continue at ${v}%</button>`:''}</div>`;
+ const slider=document.querySelector('#pb-slider');
+ slider.oninput=()=>{document.querySelector('#pb-val').textContent=slider.value+'%'};
+ document.querySelector('#back').onclick=()=>{state.posAttempt=3;render()};
+ document.querySelector('#confirm').onclick=()=>{
+  const raw=+slider.value;
+  const snapped=Math.round(raw/13)*13;
+  state.precision=snapped;
+  state.precAttempt++;
+  document.querySelector('#error').textContent=(snapped!==raw?`Calibration adjusted your ${raw}% to ${snapped}%. `:'')+'Precision must be exactly 100%. Please try again.';
+  render();
+ };
+ const gu=document.querySelector('#giveup');
+ if(gu)gu.onclick=()=>go('upload');
+}
+
+/* ---------------- PART 3 · UPLOAD (2 MB trap) ---------------- */
+function renderUpload(){
+ const f=state.resultFile;
+ app.innerHTML=`<div class="eyebrow">PHASE 3 · GENERATE PROOF</div><h2 class="title">Upload your team’s result.</h2><p class="sub">Attach the outcome your team produced. The system will evaluate it against the official marking rubric.</p><div class="project upload-box"><label for="file">Choose your team’s result</label><input id="file" type="file"><p class="rules">Accepted formats: any. Accepted size: up to 2 MB. A 2 MB limit is enough for any honest team result.</p>${f?`<div class="evidence-row"><div><strong>${esc(f.name)}</strong><small>${f.compressed?'Compressed to 1.9 MB · quality: probably preserved':(f.size>2*1048576?(f.size/1048576).toFixed(1)+' MB · rejected by the 2 MB limit':'accepted · '+(f.size/1048576).toFixed(2)+' MB')}</small></div>${(!f.compressed&&f.size>2*1048576)?`<button class="btn secondary" id="compress">Compress for me</button>`:''}</div>`:''}</div><p class="deadhelp"><button type="button" class="deadlink">Why is the limit 2 MB?</button></p><p class="error" id="error" role="alert"></p><div class="actions">${(f&&(f.compressed||f.size<=2*1048576))?`<button class="btn" id="evaluate">Evaluate my result</button>`:''}<button class="btn secondary" id="back">Back</button>${!f?`<button class="textbtn" id="demo-file">No file handy? Use the demo team result</button>`:''}</div>`;
+ const fileInput=document.querySelector('#file');
+ fileInput.onchange=()=>{
+  const file=fileInput.files[0];if(!file)return;
+  state.resultFile={name:file.name,size:file.size,compressed:false};
+  if(file.size>2*1048576)document.querySelector('#error').textContent=`${file.name} is ${(file.size/1048576).toFixed(1)} MB. The limit is 2 MB. Files this large are usually team results, not personal contributions.`;
+  render();
+ };
+ const c=document.querySelector('#compress');
+ if(c)c.onclick=()=>fakeProgress('COMPRESSING TEAM RESULT','Reducing your honest work to a size the system approves of. Quality may or may not be preserved.',()=>{state.resultFile.compressed=true;render()});
+ const dm=document.querySelector('#demo-file');
+ if(dm)dm.onclick=()=>{state.resultFile={name:'team-result.zip',size:4.5*1048576,compressed:false};document.querySelector('#error').textContent='team-result.zip is 4.5 MB. The limit is 2 MB. (Demo file added.)';render()};
+ const ev=document.querySelector('#evaluate');
+ if(ev)ev.onclick=()=>go('evaluate');
+ document.querySelector('#back').onclick=()=>go('position');
+}
+
+/* ---------------- PART 3 · EVALUATION FAILS -> RUBRIC ---------------- */
+function renderEvaluate(){
+ if(!state.evalDone){
+  app.innerHTML=`<div class="eyebrow">PHASE 3 · EVALUATION</div><h2 class="title">Evaluating your result.</h2><p class="sub">The automated evaluator is comparing your upload against the official marking criteria.</p><div class="eval-box"><span>EVALUATOR STATUS</span><strong>Running…</strong></div>`;
+  setTimeout(()=>{if(state.step!=='evaluate'||state.evalDone)return;state.evalDone=true;render()},2200);
+  return;
+ }
+ app.innerHTML=`<div class="eyebrow">PHASE 3 · EVALUATION</div><h2 class="title">The evaluator needs help.</h2><p class="sub">It cannot tell how much of this result is yours. To continue, upload your department’s official marking rubric.</p><div class="eval-box bad"><span>EVALUATOR STATUS</span><strong>Cannot accurately assess</strong></div><div class="project upload-box"><label for="rubric">Choose the official rubric</label><input id="rubric" type="file"><p class="rules">The rubric will not be read. It will, however, be acknowledged.</p>${state.rubricFile?`<div class="evidence-row"><div><strong>${esc(state.rubricFile.name)}</strong><small>acknowledged${state.rubricFile.demo?' · demo':''}</small></div></div>`:''}</div><p class="deadhelp"><button type="button" class="deadlink">View evaluator methodology</button></p><p class="error" id="error" role="alert"></p><div class="actions"><button class="btn" id="cont" ${state.rubricFile?'':'disabled'}>Continue to self-assessment</button><button class="btn secondary" id="back">Back</button>${!state.rubricFile?`<button class="textbtn" id="demo-rubric">Use the demo rubric</button>`:''}</div>`;
+ const ri=document.querySelector('#rubric');
+ ri.onchange=()=>{const f=ri.files[0];if(!f)return;state.rubricFile={name:f.name,demo:false};render()};
+ const dr=document.querySelector('#demo-rubric');
+ if(dr)dr.onclick=()=>{state.rubricFile={name:'official-marking-rubric.pdf',demo:true};render()};
+ const cont=document.querySelector('#cont');
+ if(cont)cont.onclick=()=>go('survey');
+ document.querySelector('#back').onclick=()=>go('upload');
+}
+
+/* ---------------- PART 3 · SIX VAGUE QUESTIONS ---------------- */
+function renderSurvey(){
+ app.innerHTML=`<div class="eyebrow">PHASE 3 · SELF-ASSESSMENT</div><h2 class="title">Six questions.</h2><p class="sub">Choose the closest option for each. Precise answers are not supported in this edition.</p><div class="survey">${SURVEY_Q.map((q,qi)=>`<div class="survey-q"><h3>${qi+1}. ${q[0]}</h3><select class="format-select" data-q="${qi}"><option value="">Select the closest option</option>${q[1].map(o=>`<option ${state.survey[qi]===o?'selected':''}>${o}</option>`).join('')}</select></div>`).join('')}</div><p class="deadhelp"><button type="button" class="deadlink">Why do we ask these questions?</button></p><p class="error" id="error" role="alert"></p><div class="actions"><button class="btn secondary" id="back">Back</button><button class="btn" id="gen">Generate my proof preview</button></div>`;
+ document.querySelectorAll('.survey select').forEach(s=>s.onchange=()=>{state.survey[+s.dataset.q]=s.value});
+ document.querySelector('#gen').onclick=()=>{
+  if(!SURVEY_Q.every((q,qi)=>state.survey[qi])){document.querySelector('#error').textContent='All six questions require an answer. Even “Hard to say” is an answer.';return}
+  fakeProgress('GENERATING PROOF PREVIEW','Turning six vague answers into a document. This is harder than it sounds.',()=>go('preview'));
+ };
+ document.querySelector('#back').onclick=()=>go('evaluate');
+}
+
+/* ---------------- PART 3 · UNSATISFYING DRAFT + PAYWALL ---------------- */
+function renderPreview(){
+ app.innerHTML=`<div class="eyebrow">PHASE 3 · PREVIEW</div><h2 class="title">Your contribution proof.</h2><p class="sub">This is a draft. It describes a contribution in general terms.</p><div class="preview-card"><div class="pc-head"><span>GROUPWORK CONTRIBUTION PROOF</span><b>DRAFT · FREE EDITION</b></div><div class="pc-row"><span>Contribution</span><strong>User interviews &amp; note-taking</strong></div><div class="pc-row"><span>Precision</span><strong>${state.precision}% <em style="font-style:normal;color:#8b978d">(required 100%)</em></strong></div><div class="pc-row"><span>Team result</span><strong>${esc(state.resultFile?state.resultFile.name:'—')} · acknowledged</strong></div><div class="pc-row"><span>Official rubric</span><strong>${state.rubricFile?esc(state.rubricFile.name):'missing'} · acknowledged</strong></div><div class="pc-row"><span>Self-assessment</span><strong>${esc(state.survey[0]||'—')} · ${esc(state.survey[2]||'—')} · ${esc(state.survey[5]||'—')}</strong></div><div class="pc-row"><span>Specifics</span><strong class="dim">None. This draft does not mention what you actually did.</strong></div></div><div class="upsell"><span>✳</span><div><strong>Not happy with this result?</strong>Try Deep Contribution Analysis — the edition that reads your files and writes specific sentences.<br><button class="btn" id="upsell-go">Unlock for ¥29.9</button></div></div><p class="deadhelp"><button type="button" class="deadlink">Compare editions</button></p><p class="error" id="error" role="alert"></p><div class="actions"><button class="btn secondary" id="back">Back</button><button class="btn secondary" id="keep">Keep this draft</button></div>`;
+ document.querySelector('#keep').onclick=()=>{document.querySelector('#error').textContent='The free edition cannot export PDF. Export requires Deep Contribution Analysis.'};
+ document.querySelector('#upsell-go').onclick=showPaywall;
+ document.querySelector('#back').onclick=()=>go('survey');
+}
+
+function showPaywall(){
+ overlay.classList.remove('hidden');
+ dialog.innerHTML=`<div class="eyebrow">PREMIUM FEATURE</div><h2 id="dialog-title">Deep Contribution Analysis</h2><p>The edition that actually reads your files and writes what you did — in specific sentences.</p><div class="price-row"><span>One-time unlock</span><strong>¥29.9</strong></div><ul class="feat-list"><li>Reads your team result (claimed)</li><li>Writes up to three specific sentences</li><li>87% more professional-looking</li><li>PDF export enabled</li></ul><p class="cookie-note">Fictional payment. No card is charged and nothing is stored.</p><div class="actions"><button class="btn secondary" id="pay-back">Maybe later</button><button class="btn" id="pay-go">Unlock for ¥29.9</button></div>`;
+ document.querySelector('#pay-back').onclick=()=>{overlay.classList.add('hidden')};
+ document.querySelector('#pay-go').onclick=showPayment;
+}
+
+function showPayment(){
+ dialog.innerHTML=`<div class="eyebrow">SECURE CHECKOUT</div><h2 id="dialog-title">Recharge ¥29.9</h2>${state.adReturned?`<div class="note" style="margin-bottom:14px">For your security, the payment form was cleared. Please re-enter your details.</div>`:''}<div class="pay-form"><label for="card">Card number</label><input id="card" placeholder="0000 0000 0000 0000"><label for="exp">Expiry</label><input id="exp" placeholder="MM / YY"><label for="cvc">CVC</label><input id="cvc" placeholder="···"></div><div class="ad-banner" id="ad-banner"><span class="ad-tag">AD</span><div><strong>Flash sale: 50% off Deep Analysis</strong><small>2 coupons left · Claim yours →</small></div></div><p class="cookie-note">Demo checkout. You can enter anything — or nothing.</p><div class="actions"><button class="btn secondary" id="pay-back">Back</button><button class="btn" id="pay-confirm">Pay ¥29.9</button></div>`;
+ document.querySelector('#pay-back').onclick=showPaywall;
+ document.querySelector('#pay-confirm').onclick=()=>{
+  overlay.classList.add('hidden');
+  fakeProgress('PROCESSING PAYMENT','Contacting the payment service. Please do not close this window.',()=>{state.paid=true;go('receipt')});
+ };
+ document.querySelector('#ad-banner').onclick=showAdTakeover;
+ if(!state.adShown){state.adShown=true;showAdTakeover();}
+}
+
+/* 全屏插屏广告：荧光色、持续脉动弹跳，与页面墨绿色调形成最大对比 */
+function showAdTakeover(){
+ const host=document.createElement('div');
+ host.className='ad-takeover';
+ host.innerHTML=`<div class="ad-panel"><div class="flair">🎉 LIMITED TIME · ONLY TODAY 🎉</div><h2>50% OFF<br>DEEP ANALYSIS</h2><p>Upgrade now and every sentence in your proof becomes 87% more professional.<br>(Demo advertisement. No real discount exists.)</p><span class="ad-count">⚡ 2 coupons left · expires in <b id="tk-cd">00:59</b> ⚡</span><br><button class="btn" id="tk-claim">CLAIM 50% OFF NOW</button></div><button class="ad-exit" id="tk-exit">No thanks, continue to payment →</button>`;
+ document.body.appendChild(host);
+ let sec=59;
+ const iv=setInterval(()=>{
+  const cd=host.querySelector('#tk-cd');
+  sec--;
+  if(cd)cd.textContent=sec<=0?'00:00 EXPIRED':'00:'+String(sec).padStart(2,'0');
+  if(sec<=0)clearInterval(iv);
+ },1000);
+ const close=()=>{clearInterval(iv);host.remove()};
+ host.querySelector('#tk-exit').onclick=close;
+ host.querySelector('#tk-claim').onclick=()=>{
+  close();
+  state.adReturned=true;
+  overlay.classList.remove('hidden');
+  dialog.innerHTML=`<div class="eyebrow">SPONSORED</div><h2 id="dialog-title">Coupon unavailable.</h2><p>This coupon has expired, was redeemed, or never existed. (Error 404)</p><div class="actions"><button class="btn" id="ad-return">Return to checkout</button></div>`;
+  document.querySelector('#ad-return').onclick=showPayment;
+ };
+}
+
+/* ---------------- PART 3 · RECEIPT + REAL PDF ---------------- */
+function renderReceipt(){
+ app.innerHTML=`<div class="eyebrow">✓ PROOF GENERATED</div><h2 class="title">Your contribution proof is ready.</h2><p class="sub">Specific, professional, and paid for. Exactly as promised.</p><div class="receipt pdf-preview"><div class="rh"><span>GROUPWORK CONTRIBUTION PROOF</span><b>PAID EDITION</b></div><div><span>Student ID</span><strong>${esc(state.studentId||'STU-20260001')}</strong></div><div><span>Contact</span><strong>${esc(state.email||'student@example.com')}</strong></div><div><span>Positioning</span><strong>User interviews &amp; note-taking (41% confidence)</strong></div><div><span>Precision</span><strong>${state.precision}% (required 100%)</strong></div><div><span>Team result</span><strong>${esc(state.resultFile?state.resultFile.name:'—')} · acknowledged</strong></div><div><span>Official rubric</span><strong>${state.rubricFile?esc(state.rubricFile.name):'—'} · acknowledged</strong></div><div><span>Analysis</span><strong>Deep Contribution Analysis · ¥29.90</strong></div><div><span>Status</span><strong>Self-reported · Paid · Awaiting team confirmation</strong></div></div><p class="deadhelp"><button type="button" class="deadlink">Need to appeal? Contact student services</button></p><p class="error" id="error" role="alert"></p><div class="actions"><button class="btn" id="download">Download PDF</button><button class="btn secondary" id="again">Start again</button></div>`;
+ document.querySelector('#download').onclick=downloadPdf;
+ document.querySelector('#again').onclick=resetAll;
+}
+
+function downloadPdf(){
+ const dateStr=new Date().toISOString().slice(0,10);
+ const lines=[
+  'GROUPWORK - CONTRIBUTION PROOF',
+  '----------------------------------------------',
+  'Issued: '+dateStr,
+  'Student ID: '+(state.studentId||'STU-20260001'),
+  'Contact: '+(state.email||'student@example.com'),
+  'Positioning: User interviews & note-taking',
+  'Confidence: 41% (system calibrated)',
+  'Positioning precision: '+state.precision+'% (required 100%)',
+  'Team result: '+(state.resultFile?state.resultFile.name:'none')+' - acknowledged',
+  'Official rubric: '+(state.rubricFile?state.rubricFile.name:'none')+' - acknowledged',
+  'Analysis: Deep Contribution Analysis (CNY 29.90)',
+  '----------------------------------------------',
+  'This student conducted user interviews, took notes,',
+  'and shared summaries with the team.',
+  '',
+  'This document is self-reported and was generated by',
+  'a paid analysis of self-reported information.',
+  'No team member has confirmed its contents.',
+  'Status: Awaiting team confirmation.'
+ ];
+ const blob=makePdf(lines);
+ const url=URL.createObjectURL(blob);
+ const a=document.createElement('a');
+ a.href=url;a.download='groupwork-contribution-proof.pdf';
+ document.body.append(a);a.click();a.remove();
+ setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+
+function makePdf(lines){
+ const escp=s=>String(s).replace(/\\/g,'\\\\').replace(/\(/g,'\\(').replace(/\)/g,'\\)');
+ const fs=11,leading=16,x=64,top=720;
+ const content='BT /F1 '+fs+' Tf\n'+lines.map((l,i)=>x+' '+(top-i*leading)+' Td ('+escp(l)+') Tj').join('\n')+'\nET';
+ const objs=[
+  '<< /Type /Catalog /Pages 2 0 R >>',
+  '<< /Type /Pages /Kids [3 0 R] /Count 1 >>',
+  '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>',
+  '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>',
+  '<< /Length '+content.length+' >>\nstream\n'+content+'\nendstream'
+ ];
+ let pdf='%PDF-1.4\n',offs=[],n=1;
+ objs.forEach(o=>{offs.push(pdf.length);pdf+=n+' 0 obj\n'+o+'\nendobj\n';n++});
+ const xref=pdf.length;
+ pdf+='xref\n0 '+n+'\n0000000000 65535 f \n';
+ offs.forEach(o=>pdf+=String(o).padStart(10,'0')+' 00000 n \n');
+ pdf+='trailer\n<< /Size '+n+' /Root 1 0 R >>\nstartxref\n'+xref+'\n%%EOF';
+ return new Blob([pdf],{type:'application/pdf'});
+}
+
+/* ---------------- shared helpers (replacing the removed tail of app(1).js) ---------------- */
+let fpToken=0;
+function fakeProgress(title,body,cb){
+ const token=++fpToken;
+ overlay.classList.remove('hidden');
+ dialog.innerHTML=`<div class="eyebrow">GROUPWORK ASSISTANT</div><h2 id="dialog-title">${title}</h2><p>${body}</p><div class="fakeprogress" style="margin-top:22px"><span>PROGRESS</span><strong id="fp-t">7%</strong></div><div class="progressbar" style="margin-top:8px"><i id="fp-b" style="width:7%"></i></div>`;
+ const bar=document.querySelector('#fp-b'),txt=document.querySelector('#fp-t');
+ let p=7;
+ const t=setInterval(()=>{
+  if(token!==fpToken){clearInterval(t);return}
+  p=Math.min(99,p+Math.random()*12+3);
+  bar.style.width=p+'%';txt.textContent=Math.round(p)+'%';
+  if(p>=99){clearInterval(t);setTimeout(()=>{if(token!==fpToken)return;overlay.classList.add('hidden');cb&&cb()},420)}
+ },170);
+}
+function go(s){state.step=s;render();window.scrollTo(0,0)}
+function resetAll(){
+ fpToken++;
+ overlay.classList.add('hidden');
+ document.querySelectorAll('.ad-takeover').forEach(e=>e.remove());
+ loginStartedAt=Date.now();
+ Object.assign(state,{step:'login',escapes:0,posAttempt:0,posAnswers:{},survey:{},resultFile:null,resultCompressed:false,rubricFile:null,evalDone:false,paid:false,precision:0,precAttempt:0,adReturned:false,adShown:false,studentId:'',email:''});
+ updateSidebar();render();window.scrollTo(0,0);
+}
+function valid(show){let id=document.querySelector('#student').value.trim(),email=document.querySelector('#email').value.trim(),domain=document.querySelector('#domain').value,pass=document.querySelector('#password').value,reject=document.querySelector('#reject').checked,err=!/^STU-\d+$/.test(id)?'Your student ID is missing its very important prefix: STU-.':!email||email.includes('@')||email!==email.toLowerCase()?'Please enter only the lowercase part before @.':!domain?'Please choose an email domain.':pass.length<8?'Your password needs at least 8 characters.':!/[A-Z]/.test(pass)?'Your password needs an uppercase letter.':!/[0-9]/.test(pass)?'Your password needs a number.':!pass.toLowerCase().includes(email[0].toLowerCase())?'Your password needs the first letter of your email.':reject?'Please uncheck the statement to not disagree with continuing.':'';if(show)document.querySelector('#error').textContent=err;return !err}
+function showLoginDialog(title,body,first,second){overlay.classList.remove('hidden');dialog.innerHTML=`<h2 id="dialog-title">${title}</h2><p>${body}</p><div class="actions"><button class="btn" id="dialogclose">${first}</button><button class="btn secondary" id="dialogalso">${second}</button></div>`;const close=()=>{overlay.classList.add('hidden');document.querySelector('#help').focus()};document.querySelector('#dialogclose').onclick=close;document.querySelector('#dialogalso').onclick=close;document.querySelector('#dialogclose').focus()}
+function showPopup(n){let _pop=n;overlay.classList.remove('hidden');const messages=[['Security check','Are you sure you are ready to sign in?','Yes, continue'],['One more thing','We need to make sure you are sure.','I am sure'],['Need help logging in?','It looks like you are trying to log in. Try clicking the Login button.','No, thanks'],['Verifying your intention…','This may take a moment. Or several confirmations.','Continue'],['Verifying your verification…','Your verification is important to us.','Continue'],['Verification complete.','You may now continue to GroupWork.','Continue to GroupWork']];let [title,body,btn]=messages[_pop];dialog.innerHTML=`<h2 id="dialog-title">${title}</h2><p>${body}</p><div class="actions"><button class="btn" id="popnext">${btn}</button></div>`;document.querySelector('#popnext').onclick=()=>{if(_pop<messages.length-1)showPopup(_pop+1);else{overlay.classList.add('hidden');go('position')}};document.querySelector('#popnext').focus()}
+function updateLoginTimer(){const timer=document.querySelector('#login-timer');if(!timer)return;const seconds=Math.floor((Date.now()-loginStartedAt)/1000);const h=Math.floor(seconds/3600),m=Math.floor(seconds%3600/60),sec=seconds%60;timer.textContent=(h?String(h).padStart(2,'0')+':':'')+String(m).padStart(2,'0')+':'+String(sec).padStart(2,'0')}
+function showCookieJoke(){overlay.classList.remove('hidden');dialog.innerHTML=`<div class="cookie-icon" aria-hidden="true">✳</div><div class="eyebrow">A VERY IMPORTANT QUESTION</div><h2 id="dialog-title">This site uses cookies, is that a problem for you?</h2><p class="cookie-note">Demo joke: this prompt does not set or manage cookies.</p><div class="actions cookie-actions"><button class="btn" id="cookie-no">Not really, no</button><button class="btn secondary" id="cookie-yes">Yes</button></div>`;for(const id of ['cookie-no','cookie-yes'])document.querySelector('#'+id).onclick=()=>{overlay.classList.add('hidden');document.querySelector('#student').focus()};document.querySelector('#cookie-no').focus()}
+
+/* ---------------- boot ---------------- */
+Object.assign(state,{posAttempt:0,posAnswers:{},survey:{},resultFile:null,resultCompressed:false,rubricFile:null,evalDone:false,paid:false,precision:0,precAttempt:0,adReturned:false,adShown:false,studentId:'',email:''});
+updateSidebar();
+render();
+updateLoginTimer();setInterval(updateLoginTimer,1000);showCookieJoke();
+
+/* 巡场演示：按 R 键在任何一步一键重置，供下一组评委重新体验 */
+document.addEventListener('keydown',e=>{
+ if((e.key==='r'||e.key==='R')&&!/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName))resetAll();
+});
+
+</script></body></html>
